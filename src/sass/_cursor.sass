@@ -1,0 +1,55 @@
+body 
+    margin: 0
+    height: 100vh
+    background-color: #000
+    overflow: hidden
+    cursor: none
+
+.code-trail 
+    position: absolute
+    color: #0f0
+    font-family: monospace
+    font-size: 18px
+    opacity: 1
+    pointer-events: none
+    transition: opacity 1s ease-out
+  
+.cursor-circle 
+    position: absolute
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    border: 2px solid #0f0
+    display: flex
+    align-items: center
+    justify-content: center
+    pointer-events: none
+    opacity: 0
+    transition: opacity 0.2s ease
+  
+
+.falling-char 
+    position: absolute
+    color: #0f0
+    font-family: monospace
+    font-size: 14px
+    opacity: 1
+    animation: fall linear forwards
+  
+@keyframes fall 
+    0% 
+        transform: translateY(0)
+        opacity: 0
+    40% 
+        opacity: 1
+    
+    100% 
+        transform: translateY(50px)
+        opacity: 0
+    
+
+
+
+
+    
+  
