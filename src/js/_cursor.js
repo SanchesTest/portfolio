@@ -39,13 +39,13 @@ export function initCustomCursor() {
         fallingChar.style.top = `${e.pageY + offsetY}px`; // Позиция по Y, сдвинут на случайное значение
     
         // Устанавливаем длительность анимации
-        const duration = Math.random() * 1 + 0.5; // Случайная длительность от 0.5 до 1.5 секунды
+        const duration = Math.random() * 1 + 0.8; // Случайная длительность от 0.5 до 1.5 секунды
         fallingChar.style.animationDuration = `${duration}s`;
     
         // Удаляем символ после окончания анимации
-        setTimeout(() => {
+        fallingChar.addEventListener('animationend', () => {
           fallingChar.remove();
-        }, duration * 1000);
+        });
       });
 }
 
