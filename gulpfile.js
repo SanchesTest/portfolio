@@ -81,12 +81,12 @@ const gulpSassCompiler = gulpSass(sass); // Создаем экземпляр gu
 function buildStyles() {
   return src(paths.styles.src)
     .pipe(gulpSassCompiler({ 
-      outputStyle: 'compressed' // Устанавливаем стиль вывода, при необходимости
+      outputStyle: 'expanded' // Устанавливаем стиль вывода, при необходимости
     }).on('error', gulpSassCompiler.logError)) // Обработка ошибок компиляции
     .pipe(autoprefixer({
       cascade: false
     }))
-    .pipe(cssmin())
+    // .pipe(cssmin())
     .pipe(dest(paths.styles.dest));
 }
 
