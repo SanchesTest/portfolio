@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix HELLO Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .matrix-container {
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 48px;
+            color: limegreen;
+            display: flex;
+        }
+
+        .letter {
+            position: absolute;
+            opacity: 0;
+            animation: fly 2s forwards;
+        }
+
+        @keyframes fly {
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(0);
+            }
+            25% {
+                opacity: 1;
+                transform: translateX(100px) translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(0) translateY(100px);
+            }
+            75% {
+                opacity: 1;
+                transform: translateX(-100px) translateY(0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        .letter:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .letter:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .letter:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .letter:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        .letter:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-container">
+        <div class="letter" style="top: 0; left: 0;">H</div>
+        <div class="letter" style="top: 0; left: 50px;">E</div>
+        <div class="letter" style="top: 0; left: 100px;">L</div>
+        <div class="letter" style="top: 0; left: 150px;">L</div>
+        <div class="letter" style="top: 0; left: 200px;">O</div>
+    </div>
+
+    <script>
+        // Optionally, you can add more complex logic or control the timing dynamically
+    </script>
+</body>
+</html>
