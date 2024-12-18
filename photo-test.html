@@ -1,94 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matrix Photo Effect</title>
 </head>
 <style>
-/* styles.css */
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #000;
-  overflow: hidden;
-}
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+  }
 
-#image-container {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(20, 1fr); /* 20 квадратов по ширине */
-  grid-template-rows: repeat(20, 1fr); /* 20 квадратов по высоте */
-  width: 500px; /* Ширина изображения */
-  height: 500px; /* Высота изображения */
-}
+  #image-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    width: 500px;
+    height: 500px;
+  }
 
-.pixel {
-  width: 100%;
-  height: 100%;
-  background-size: 500px 500px; /* Размер полного изображения */
-  background-position: center;
-  opacity: 0;
-  position: relative;
-  transform: scale(0.5);
-  transition: all 1s ease-out;
-}
-
-
+  .pixel {
+    width: 100%;
+    height: 100%;
+    background-size: 500px 500px;
+    background-position: center;
+    opacity: 0;
+    position: relative;
+    transform: scale(0.5);
+    transition: all 1s ease-out;
+  }
 </style>
+
 <body>
   <div id="image-container"></div>
- 
+
   <script>
-// script.js
-const imageUrl = 'dist/img/avatar4.png'; // Ссылка на ваше изображение
-const container = document.getElementById('image-container');
-const gridSize = 20; // Количество квадратов в строке и столбце
+    const imageUrl = 'dist/img/avatar4.png'; // Ссылка на ваше изображение
+    const container = document.getElementById('image-container');
+    const gridSize = 20;
 
-const containerWidth = 500; // Ширина изображения
-const containerHeight = 500; // Высота изображения
+    const containerWidth = 500;
+    const containerHeight = 500;
 
-// Размер каждого квадрата
-const pixelWidth = containerWidth / gridSize;
-const pixelHeight = containerHeight / gridSize;
+    const pixelWidth = containerWidth / gridSize;
+    const pixelHeight = containerHeight / gridSize;
 
-// Генерация сетки
-for (let row = 0; row < gridSize; row++) {
-  for (let col = 0; col < gridSize; col++) {
-    const pixel = document.createElement('div');
-    pixel.classList.add('pixel');
+    // Генерация сетки
+    for (let row = 0; row < gridSize; row++) {
+      for (let col = 0; col < gridSize; col++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
 
-    // Установка части изображения
-    pixel.style.backgroundImage = `url(${imageUrl})`;
-    pixel.style.backgroundPosition = `${-(col * pixelWidth)}px ${-(row * pixelHeight)}px`;
-    pixel.style.backgroundSize = `${containerWidth}px ${containerHeight}px`;
+        // Установка части изображения
+        pixel.style.backgroundImage = `url(${imageUrl})`;
+        pixel.style.backgroundPosition = `${-(col * pixelWidth)}px ${-(row * pixelHeight)}px`;
+        pixel.style.backgroundSize = `${containerWidth}px ${containerHeight}px`;
 
-    // Устанавливаем начальное положение за пределами экрана
-    const randomAngle = Math.random() * 360; // Случайное направление
-    const distance = Math.random() * 500 + 500; // Случайное расстояние
-    const x = Math.cos((randomAngle * Math.PI) / 180) * distance;
-    const y = Math.sin((randomAngle * Math.PI) / 180) * distance;
+        // Устанавливаем начальное положение за верхней границей контейнера
+        const x = col * pixelWidth - Math.random() * 100; // Горизонтальная позиция смещена влево
+        const y = -Math.random() * 500 - 100; // Начальное положение выше контейнера
 
-    pixel.style.transform = `translate(${x}px, ${y}px) scale(0.5)`;
+        pixel.style.transform = `translate(${x}px, ${y}px) scale(0.5)`;
 
-    // Добавляем квадрат в контейнер
-    container.appendChild(pixel);
+        // Добавляем квадрат в контейнер
+        container.appendChild(pixel);
 
-    // Анимация с небольшой задержкой
-    setTimeout(() => {
-      pixel.style.opacity = 1;
-      pixel.style.transform = `translate(0, 0) scale(1)`;
-    }, Math.random() * 2000); // Случайная задержка
-  }
-}
-
-
-
-
-
+        // Анимация с небольшой задержкой
+        setTimeout(() => {
+          pixel.style.opacity = 1;
+          pixel.style.transform = `translate(0, 0) scale(1)`;
+        }, Math.random() * 2000);
+      }
+    }
   </script>
 </body>
+
 </html>
